@@ -3,7 +3,7 @@ This repository demonstrates how to run AngularJS and Angular applications side-
 
 ## Project Structure
 - `/src/legacy` - Contains the AngularJS (1.x) application
-- `/src/app` - Contains the new Angular application
+- `/src/modern` - Contains the new Angular application
 - `/src/hybrid` - Contains upgrade/downgrade modules and shared services
 
 ## Features
