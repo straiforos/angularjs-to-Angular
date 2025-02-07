@@ -8,6 +8,7 @@ import { UpgradeModule } from '@angular/upgrade/static';
   standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   template: `
+    <!-- Modern Angular Navigation -->
     <nav class="modern-nav">
       <div class="nav-brand">Hybrid Application</div>
       <div class="nav-links">
@@ -29,11 +30,16 @@ import { UpgradeModule } from '@angular/upgrade/static';
       </div>
     </nav>
 
-    <!-- Angular router outlet -->
-    <router-outlet></router-outlet>
-    
-    <!-- AngularJS view -->
-    <div ng-view></div>
+    <!-- Content Container -->
+    <div class="content-container">
+      <!-- AngularJS view -->
+      <div class="legacy-view-container">
+        <div ng-view></div>
+      </div>
+
+      <!-- Angular router outlet -->
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [`
     .modern-nav {
@@ -43,6 +49,15 @@ import { UpgradeModule } from '@angular/upgrade/static';
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .content-container {
+      margin-top: 80px; /* Adjust based on your nav height */
+      padding: 20px;
     }
     .nav-brand {
       font-size: 1.25rem;
