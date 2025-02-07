@@ -7,12 +7,37 @@
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="app/app.js"></script>
     <script src="app/controllers/mainController.js"></script>
+    <script src="app/controllers/aboutController.js"></script>
+    <script src="app/controllers/contactController.js"></script>
+    <style>
+        .nav-menu {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        .nav-menu li {
+            display: inline;
+            margin-right: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-    <nav>
+    <nav class="nav-menu">
         <ul>
-            <li><a href="#/">Home</a></li>
-            <li><a href="#/about">About</a></li>
+            <li><a href="#!/">Home</a></li>
+            <li><a href="#!/about">About</a></li>
+            <li><a href="#!/contact">Contact</a></li>
         </ul>
     </nav>
     
