@@ -48,13 +48,21 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "../../legacy/app",
+                "output": "/app"
               }
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/angular/angular.min.js",
+              "./node_modules/angular-route/angular-route.min.js",
+              "../../legacy/app/app.js",
+              "../../legacy/app/controllers/mainController.js",
+              "../../legacy/app/controllers/aboutController.js",
+              "../../legacy/app/controllers/contactController.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UpgradeModule } from '@angular/upgrade/static';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,31 @@ import { CommonModule } from '@angular/common';
   imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   template: `
     <nav class="modern-nav">
-      <div class="nav-brand">Angular v19</div>
+      <div class="nav-brand">Hybrid Application</div>
       <div class="nav-links">
-        <a routerLink="/modern/home" routerLinkActive="active">Home</a>
-        <a routerLink="/modern/dashboard" routerLinkActive="active">Dashboard</a>
-        <a routerLink="/modern/settings" routerLinkActive="active">Settings</a>
+        <!-- Modern Angular Routes -->
+        <div class="nav-section">
+          <span class="section-label">Angular v19:</span>
+          <a routerLink="/v2/home" routerLinkActive="active">Home</a>
+          <a routerLink="/v2/dashboard" routerLinkActive="active">Dashboard</a>
+          <a routerLink="/v2/settings" routerLinkActive="active">Settings</a>
+        </div>
+        
+        <!-- Legacy AngularJS Routes -->
+        <div class="nav-section">
+          <span class="section-label">AngularJS:</span>
+          <a href="/app/">Legacy Home</a>
+          <a href="/app/about">About</a>
+          <a href="/app/contact">Contact</a>
+        </div>
       </div>
     </nav>
 
+    <!-- Angular router outlet -->
     <router-outlet></router-outlet>
+    
+    <!-- AngularJS view -->
+    <div ng-view></div>
   `,
   styles: [`
     .modern-nav {
@@ -33,7 +50,16 @@ import { CommonModule } from '@angular/common';
     }
     .nav-links {
       display: flex;
+      gap: 2rem;
+    }
+    .nav-section {
+      display: flex;
+      align-items: center;
       gap: 1rem;
+    }
+    .section-label {
+      font-size: 0.875rem;
+      opacity: 0.8;
     }
     .nav-links a {
       color: white;
@@ -51,5 +77,9 @@ import { CommonModule } from '@angular/common';
   `]
 })
 export class AppComponent {
-  title = 'Modern Angular App';
+  constructor(private upgrade: UpgradeModule) {}
+
+  ngOnInit() {
+    this.upgrade.bootstrap(document.body, ['legacyApp']);
+  }
 }

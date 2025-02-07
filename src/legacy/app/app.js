@@ -3,23 +3,21 @@
 angular.module('legacyApp', ['ngRoute'])
     .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/', {
+            .when('/app/', {
                 templateUrl: 'app/templates/home.html',
                 controller: 'MainController'
             })
-            .when('/about', {
+            .when('/app/about', {
                 templateUrl: 'app/templates/about.html',
                 controller: 'AboutController'
             })
-            .when('/contact', {
+            .when('/app/contact', {
                 templateUrl: 'app/templates/contact.html',
                 controller: 'ContactController'
-            })
-            .otherwise({
-                redirectTo: '/'
             });
 
-        // Use HTML5 mode (optional)
+        // Use HTML5 History API
         $locationProvider.hashPrefix('');
+        $locationProvider.html5Mode(true);
     }]);
 
