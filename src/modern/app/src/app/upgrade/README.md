@@ -13,6 +13,7 @@ The hybrid setup uses Angular's `@angular/upgrade/static` module to:
 ### Key Components
 
 - `upgrade.module.ts`: Main module that bootstraps AngularJS within Angular
+- `url-handling-strategy.ts`: Custom URL handling strategy for routing coordination between Angular and AngularJS
 - Custom URL handling strategy for routing coordination
 - Shared navigation system in the Angular shell
 

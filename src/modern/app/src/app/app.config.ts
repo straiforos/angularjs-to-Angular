@@ -1,9 +1,9 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { UrlHandlingStrategy } from '@angular/router';
-import { LegacyUpgradeModule } from './upgrade/upgrade.module';
 
-import { routes, CustomUrlHandlingStrategy } from './app.routes';
+import { routes } from './app.routes';
+import { LegacyUpgradeModule, CustomUrlHandlingStrategy } from './upgrade';
 
 export const appConfig: ApplicationConfig = {
   providers: [
