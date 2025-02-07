@@ -19,7 +19,5 @@ export class LegacyUpgradeModule {
     if (!(window as any).angular.module('legacyApp')) {
       throw new Error('legacyApp module is not loaded!');
     }
-    
-    this.upgrade.bootstrap(document.body, ['legacyApp'], { strictDi: true });
   }
 } 

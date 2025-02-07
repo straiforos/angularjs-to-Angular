@@ -1,4 +1,4 @@
-import { UrlHandlingStrategy } from '@angular/router';
+import { UrlHandlingStrategy, UrlTree } from '@angular/router';
 
 /**
  * Custom URL handling strategy to manage routing between Angular and AngularJS applications.
@@ -10,10 +10,11 @@ export class CustomUrlHandlingStrategy implements UrlHandlingStrategy {
    * @param url - The URL tree object to evaluate
    * @returns boolean - True if URL should be handled by Angular, false if it should be handled by AngularJS
    */
-  shouldProcessUrl(url: any): boolean {
-    console.log('shouldProcessUrl', url.toString());
-    // Angular handles /v2/* routes and root route, AngularJS handles all other routes
-    return url.toString().startsWith('/v2') || url.toString() === '/';
+  shouldProcessUrl(url: UrlTree): boolean {
+    const urlStr = url.toString();
+    // Process modern app routes (/v2/*), let AngularJS handle everything else
+    const isModernRoute = urlStr.startsWith('/v2');
+    return isModernRoute;
   }
 
   /**
@@ -21,8 +22,7 @@ export class CustomUrlHandlingStrategy implements UrlHandlingStrategy {
    * @param url - The URL tree object to process
    * @returns The URL to be processed
    */
-  extract(url: any): any {
-    console.log('extract', url.toString());
+  extract(url: UrlTree): UrlTree {
     return url;
   }
 
@@ -32,8 +32,7 @@ export class CustomUrlHandlingStrategy implements UrlHandlingStrategy {
    * @param wholeUrl - The complete current URL
    * @returns The URL that should be shown in the browser
    */
-  merge(newUrlPart: any, wholeUrl: any): any {
-    console.log('merge', newUrlPart.toString(), wholeUrl.toString());
+  merge(newUrlPart: UrlTree, wholeUrl: UrlTree): UrlTree {
     return newUrlPart;
   }
 } 

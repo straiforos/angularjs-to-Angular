@@ -33,12 +33,14 @@ import { UpgradeModule } from '@angular/upgrade/static';
     <!-- Content Container -->
     <div class="content-container">
       <!-- AngularJS view -->
-      <div class="legacy-view-container">
+      <div class="legacy-view-container" [class.active]="isLegacyRoute">
         <div ng-view></div>
       </div>
 
       <!-- Angular router outlet -->
-      <router-outlet></router-outlet>
+      <div class="modern-view-container" [class.active]="isModernRoute">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   `,
   styles: [`
@@ -56,8 +58,9 @@ import { UpgradeModule } from '@angular/upgrade/static';
       z-index: 1000;
     }
     .content-container {
-      margin-top: 80px; /* Adjust based on your nav height */
+      margin-top: 80px;
       padding: 20px;
+      position: relative;
     }
     .nav-brand {
       font-size: 1.25rem;
@@ -89,6 +92,23 @@ import { UpgradeModule } from '@angular/upgrade/static';
     .nav-links a.active {
       background-color: rgba(255,255,255,0.2);
     }
+
+    .legacy-view-container,
+    .modern-view-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    .legacy-view-container.active,
+    .modern-view-container.active {
+      opacity: 1;
+      visibility: visible;
+    }
   `]
 })
 export class AppComponent {
@@ -96,5 +116,13 @@ export class AppComponent {
 
   ngOnInit() {
     this.upgrade.bootstrap(document.body, ['legacyApp']);
+  }
+
+  get isLegacyRoute(): boolean {
+    return window.location.pathname.startsWith('/app');
+  }
+
+  get isModernRoute(): boolean {
+    return window.location.pathname.startsWith('/v2');
   }
 }
