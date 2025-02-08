@@ -1,7 +1,7 @@
 {
   "name": "modern",
   "version": "1.0.0",
-  "description": "Modern Angular 19 application for side by side example",
+  "description": "Angular cli for multiple versions on one machine.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
