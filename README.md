@@ -17,19 +17,19 @@ This repository demonstrates how to run AngularJS and Angular applications side-
 - Webpack bundling for legacy AngularJS code
 
 ## Getting Started
-1. Install dependencies:
+1. Install all dependencies with a single command:
 ```bash
-# Install dependencies for both applications
-cd src/legacy && npm install
-cd ../modern/app && npm install
+npm run install:all
 ```
 
-2. Run the application:
+2. Run the application in development mode:
 ```bash
-cd src/modern/app
-npm start    # Builds legacy app once then starts Angular
-# or
-npm run dev  # Runs both legacy and Angular in watch mode concurrently
+npm run dev    # Runs both legacy and Angular in watch mode concurrently
+```
+
+Or for production mode:
+```bash
+npm start      # Builds legacy app then starts Angular
 ```
 
 ## Implementation Details
@@ -53,26 +53,17 @@ This example follows the recommended upgrade path:
 4. Use path-based routing to clearly separate old and new features
 
 ## Development Workflow
-1. Development with hot reload:
-   ```bash
-   cd src/modern
-   npm run dev
-   ```
-   This will:
-   - Start webpack in watch mode for the legacy (AngularJS) code
-   - Run Angular dev server with live reload enabled
-   - Changes to either codebase will trigger automatic rebuilds
-   - Angular app will serve from `http://localhost:4200`
-   - Legacy app will rebuild to `src/legacy/dist/legacy-bundle.js`
+The project provides several npm scripts at the root level:
 
-2. Production build:
-   ```bash
-   cd src/modern
-   npm start
-   ```
-   This will:
-   - Build the legacy app for production using webpack
-   - Start the Angular development server
+- `npm run install:all` - Installs dependencies for both applications
+- `npm run dev` - Starts both applications in development mode with hot reload
+- `npm start` - Builds legacy app and starts Angular for production
+- `npm run build` - Builds both applications for production
+
+When running in development mode (`npm run dev`):
+- Legacy (AngularJS) app will rebuild automatically on changes
+- Angular app will serve from `http://localhost:4200` with live reload
+- Legacy app builds to `src/legacy/dist/legacy-bundle.js`
 
 ## Resources
 - [Official Angular Upgrade Guide](https://angular.io/guide/upgrade)

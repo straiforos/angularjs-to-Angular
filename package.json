@@ -1,0 +1,14 @@
+{
+  "name": "angular-migration-example",
+  "version": "1.0.0",
+  "description": "AngularJS to Angular Migration Example",
+  "scripts": {
+    "install:all": "npm install && cd src/legacy && npm install && cd ../modern/app && npm install",
+    "dev": "concurrently \"cd src/legacy && npm run watch\" \"cd src/modern/app && npm start\"",
+    "start": "cd src/legacy && npm run build && cd ../modern/app && npm start",
+    "build": "cd src/legacy && npm run build && cd ../modern/app && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 

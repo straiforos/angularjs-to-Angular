@@ -2,7 +2,6 @@
   "name": "modern",
   "version": "1.0.0",
   "description": "Modern Angular 19 application for side by side example",
-  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
