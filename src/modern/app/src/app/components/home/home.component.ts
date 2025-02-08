@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <div class="modern-home">
-      <h1>Modern Angular Features</h1>
+      <h1>Modern Angular Features123</h1>
       <p>Welcome to the Angular (v19) side of our hybrid application.</p>
       <div class="features-list">
         <h3>Modern Features Used:</h3>
